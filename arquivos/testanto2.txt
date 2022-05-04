@@ -1,0 +1,1 @@
+aprendendo a manipuilar arquivos de texto no Python3 
