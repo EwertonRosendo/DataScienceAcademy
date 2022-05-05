@@ -15,4 +15,5 @@ tratamento(frase)"""
 frase = 'A Data Science Academy oferce os melhores cursos de análise de dados do Brasil'.split()
 resultado = [["{}, {}, {}".format(palavra.upper(), palavra.lower(), len(palavra))] for palavra in frase]
 
-print(resultado)
+for r in resultado:
+    print(r)
