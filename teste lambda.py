@@ -1,3 +1,2 @@
-lista = [2, 3, 1, 5]
-reultado = list(map(lambda x: x*2, lista))
-print(reultado)
+lista = list(reversed(range(1, 11)))
+print(lista)
