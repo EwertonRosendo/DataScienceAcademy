@@ -1,6 +1,6 @@
 import os
 import sqlite3
-
+from time import sleep
 # Essa linha irá remover o arquivo escola.db caso ele exista, se não existir,  não fará nada
 
 os.remove("escola.db") if os.path.exists("escola.db") else None
@@ -49,3 +49,27 @@ dados = cur.fetchall()
 
 for linha in dados:
     print(f'Curso Id: {linha[0]} Titulo: {linha[1]}, Categoria: {linha[2]}\n')
+
+recset = [(1003, "Gestão de dados com MongoDB", "Big Data"),
+          (1004, "R Fundamentos", "Analise de Dados")]
+
+try:
+    for rec in recset:
+        cur.execute(sql_insert, rec)
+except Exception as causa:
+    print(f"A causa do erro foi: {causa.__class__}")
+
+else:
+    print(f"Dados adicionados com sucesso")
+
+finally:
+    con.commit()
+
+cur.execute(sql_select)
+dados = cur.fetchall()
+
+for linha in dados:
+    sleep(1)
+    print(f"Id: {dados[0]}, Titulo: {dados[1]}, Categoria: {dados[2]}")
+
+con.close()
