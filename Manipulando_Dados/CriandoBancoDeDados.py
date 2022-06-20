@@ -7,7 +7,7 @@ os.remove("escola.db") if os.path.exists("escola.db") else None
 
 # A função connect é usada para conectar-se a um banco de dados, entretanto
 # Caso não seja localizado, ele também cria um banco de dados com o nome do parametro passado
-con = sqlite3.connect("escola.db")  # salvamos a conexão em um objeto chamado con
+con = sqlite3.connect("escola.db")  # salvamos a conexão num objeto chamado con
 
 
 # Agora vamos criar um Cursor, que serve para acessar todos os dados dentro do banco de dados
