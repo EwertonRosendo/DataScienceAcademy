@@ -25,10 +25,15 @@ cur.execute(sql_create)
 # esse é o comando para inserir os valores na tabela cursos
 sql_insert = "insert into cursos values (?, ?, ?)"
 
+# Base de dados para ser incluida no Banco de Dados
 recset = [(1000, "Ciência de Dados", "Data Science"),
           (1001, "Big Data Fundamentos", "Big Data"),
           (1002, "Python Fundamentos", "Analise de Dados")]
 
+# -----------------------------------------------------------------------
+# Aqui utilizamos um loop for para passar pelos dados que vão ser adicionados
+# ao bd. Com o comando cur.execute fazemos com que o cursor insira os dados com
+# o comando sql salvo na variavel sql_insert
 try:
     for rec in recset:
         cur.execute(sql_insert, rec)
@@ -41,15 +46,24 @@ else:
 
 finally:
     con.commit()
+    # Aqui passamos as atualizações do repositorio local para o arquivo escola.db
+# -----------------------------------------------------------------------
 
+# Comando para selecionar todos os elementos da tabela cursos
 sql_select = "select * from cursos"
 
+# Executamos o comando de seleção
 cur.execute(sql_select)
+
+# Seleciona todos os valores em formatos de 'listas'
 dados = cur.fetchall()
 
+# Utilizamos o laço for para printar os dados
 for linha in dados:
     print(f'Curso Id: {linha[0]} Titulo: {linha[1]}, Categoria: {linha[2]}\n')
 
+# ---------------------------------------------------------------------------
+# Refazemos o mesmo processo de antes
 recset = [(1003, "Gestão de dados com MongoDB", "Big Data"),
           (1004, "R Fundamentos", "Analise de Dados")]
 
@@ -72,4 +86,7 @@ for linha in dados:
     sleep(1)
     print(f"Id: {dados[0]}, Titulo: {dados[1]}, Categoria: {dados[2]}")
 
+# ---------------------------------------------------------------------------
+
+# Por fim fechamos o banco de dados para evitar problemas
 con.close()
