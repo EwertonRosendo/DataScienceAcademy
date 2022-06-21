@@ -61,14 +61,27 @@ def leitura_colunas():
         print(linha[3])
 
 
+def atualiza_dados():
+    c.execute("update produtos set valor = 70.0 where valor = 199")
+    conn.commit()
+
+def remove_dados():
+    c.execute("delete from produtos where valor < 200.0")
+    conn.commit()
+
+
+
 print("-----------------TODOS OS DADOS-----------------")
 leitura_todos_dados()
+
+"""
 print("-----------------MAIORES QUE 500-----------------")
 leitura_registros()
 print("-----------------LEITURA COLUNA-----------------")
 leitura_colunas()
+"""
 
-
-
+remove_dados()
+leitura_todos_dados()
 c.close()
 conn.close()
