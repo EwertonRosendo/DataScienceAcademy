@@ -11,22 +11,30 @@ while True:
     print(f"[5] - Alterar na tabela")
     print(f"[6] - Sair")
     duvida = int(input("Informe qual ação deseja realizar: \n"))
-    # A opção [1] serve para criar a tabela Pessoa que possui id, nome, trabalho e cpf
+    # A opção [1] serve para CRIAR a tabela Pessoa que possui id, nome, trabalho e cpf
     if duvida == 1:
+        # Cria a tabela pessoa
         modulos.funções.criar_tabela(c)
 
-
-    # A opção [2] serve para adicionar dados na tabela
+    # A opção [2] serve para ADICIONAR dados na tabela
     if duvida == 2:
+        # Insere valores novos na tabela
         modulos.funções.inserir_dados(conn, c)
 
 
-    # A opção [3] serve para buscar algum dado na tabela
+    # A opção [3] serve para PESQUISAR algum dado na tabela
     elif duvida == 3:
-        print()
+        def pesquisar_dados(conexao, cursor):
+            print()
 
-    # A opção [4] serve para deletar algum dado da tabela
+
+
+    # A opção [4] serve para DELETAR algum dado da tabela
     elif duvida == 4:
+        # confesso que eu me perdi na organização disso aqui, MAS TA RODANDO
+        c.execute("select * from pessoa")
+        qtd_antigo = len(c.fetchall())
+
         while True:
             try:
                 cpf = str(input("Informe o cpf da pessoa que deseja deletar: "))
@@ -34,16 +42,22 @@ while True:
             except Exception as causa:
                 print(f"Problema detectado, tente novamente - {causa.__class__}")
             else:
-                for c in range(0, 3):
-                    print("Pesquisando..{}".format(c*"."))
+                for cont in range(0, 3):
+                    print("Pesquisando..{}".format(cont*"."))
                     time.sleep(1)
-            break
+            finally:
+                c.execute("select * from pessoa")
+                qtd_novo = len(c.fetchall())
 
-    # A opção [5] serve para alterar algum dado na tabela
+                if qtd_novo == (qtd_antigo - 1):
+                    print(f"O cadastro foi removido com sucesso!")
+                    break
+
+    # A opção [5] serve para ALTERAR algum dado na tabela
     elif duvida == 5:
         print()
 
-    # A opção [6] serve para finalizar o teste
+    # A opção [6] serve para FINALIZAR o teste
     elif duvida == 6:
         break
 
