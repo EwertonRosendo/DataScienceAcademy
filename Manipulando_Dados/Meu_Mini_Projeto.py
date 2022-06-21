@@ -52,6 +52,8 @@ while True:
                 if qtd_novo == (qtd_antigo - 1):
                     print(f"O cadastro foi removido com sucesso!")
                     break
+                else:
+                    print("Não foi possivel localizar o usuario")
 
     # A opção [5] serve para ALTERAR algum dado na tabela
     elif duvida == 5:
