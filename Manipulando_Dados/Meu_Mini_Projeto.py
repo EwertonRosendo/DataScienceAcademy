@@ -29,6 +29,9 @@ while True:
     elif duvida == 5:
         break
 
+    else:
+        print("Opção não detectada, informe um valor valido!")
+
 
 c.close()
 conn.close()
