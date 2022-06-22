@@ -24,9 +24,8 @@ while True:
 
     # A opção [3] serve para PESQUISAR algum dado na tabela
     elif duvida == 3:
-        def pesquisar_dados(conexao, cursor):
-            print()
-
+        # Chama a função de pesquisar dados
+        modulos.funções.pesquisar_dados(c)
 
 
     # A opção [4] serve para DELETAR algum dado da tabela

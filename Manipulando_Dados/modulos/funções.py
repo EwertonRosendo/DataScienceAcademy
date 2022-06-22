@@ -33,3 +33,16 @@ def inserir_dados(conexao, cursor):
 
     cursor.execute("insert into pessoa (nome, trabalho, cpf) values(?, ?, ?)", (nome, trabalho, cpf))
     conexao.commit()
+
+
+def pesquisar_dados(cursor):
+    try:
+        cpf_pesquisa = str(input("Informe o cpf a ser buscado:"))
+        cursor.execute("select * from pessoa")
+        dados = cursor.fetchall()
+        for p in dados:
+            if cpf_pesquisa == p[3]:
+                print("Cpf encontrado")
+                print(f"Id: {p[0]}, Nome: {p[1]}, Função: {p[2]}, Cpf: {p[3]}")
+    except Exception as causa:
+        print("A causa do erro foi {}", format(causa.__class__))
