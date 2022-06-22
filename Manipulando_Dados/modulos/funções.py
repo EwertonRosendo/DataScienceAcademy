@@ -46,3 +46,10 @@ def pesquisar_dados(cursor):
                 print(f"Id: {p[0]}, Nome: {p[1]}, Função: {p[2]}, Cpf: {p[3]}")
     except Exception as causa:
         print("A causa do erro foi {}", format(causa.__class__))
+
+
+def alterar_dados(conexao, cursor):
+    cpf_mudar_trabalho = str(input("Informe o cpf que terá informações alteradas: "))
+    novo_trabalho = str(input("Qual a nova função? "))
+    cursor.execute("update pessoa set trabalho = ? where cpf = ?", (novo_trabalho, cpf_mudar_trabalho))
+    conexao.commit()

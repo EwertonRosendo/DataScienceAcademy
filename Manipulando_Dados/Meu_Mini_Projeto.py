@@ -56,16 +56,12 @@ while True:
 
     # A opção [5] serve para ALTERAR algum dado na tabela
     elif duvida == 5:
-        def alterar_dados(conexao, cursor):
-            cpf_mudar_trabalho = str(input("Informe o cpf que terá informações alteradas: "))
-            novo_trabalho = str(input("Qual a nova função? "))
-            cursor.execute("update pessoa set trabalho = ? where cpf = ?", (novo_trabalho, cpf_mudar_trabalho))
-            conexao.commit()
-
-        alterar_dados(conn, c)
+        #chamando função de alterar dados
+        modulos.funções.alterar_dados(conn, c)
 
     # A opção [6] serve para FINALIZAR o teste
     elif duvida == 6:
+        # Fim da execução do programa
         break
 
     else:
