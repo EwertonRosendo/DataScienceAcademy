@@ -89,4 +89,8 @@ for linha in dados:
 # ---------------------------------------------------------------------------
 
 # Por fim fechamos o banco de dados para evitar problemas
+print("----------------------------------------------------------------------------")
+cur.execute("select * from cursos")
+davi = cur.fetchall()
+print(f"{davi}")
 con.close()
