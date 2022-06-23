@@ -2,6 +2,7 @@ import os
 import sqlite3
 import datetime
 import random
+import matplotlib.pyplot as plt
 
 # Verificando se o arquivo já existe
 import time
@@ -74,14 +75,21 @@ def remove_dados():
 print("-----------------TODOS OS DADOS-----------------")
 leitura_todos_dados()
 
-"""
-print("-----------------MAIORES QUE 500-----------------")
-leitura_registros()
-print("-----------------LEITURA COLUNA-----------------")
-leitura_colunas()
-"""
 
-remove_dados()
-leitura_todos_dados()
+def dados_grafico():
+    c.execute("select id, valor from produtos")
+    ids = []
+    valores = []
+    dados = c.fetchall()
+    for linha in dados:
+        ids.append(linha[0])
+        valores.append(linha[1])
+
+    plt.bar(ids, valores)
+    plt.show()
+
+
+dados_grafico()
+
 c.close()
 conn.close()
