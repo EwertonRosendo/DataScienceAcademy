@@ -20,3 +20,5 @@ colletion = db.posts
 post_id = colletion.insert_one(post1)
 
 post_id.inserted_id
+
+post_id
